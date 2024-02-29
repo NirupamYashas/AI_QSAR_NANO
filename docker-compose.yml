@@ -4,7 +4,7 @@ services:
   
   nginx:
     image: nginx
-    container_name: nginx_container
+    container_name: nano_nginx_container
     restart: always
     volumes:
       - ./default.conf:/etc/nginx/conf.d/default.conf
@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
     image: aiqsarnano-server-image:1.0.0
     build:
-      context: django 
+      context: backend 
       dockerfile: Dockerfile
     ports:  #outside:inside(container)
       - 8000:8000
@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
     image: aiqsarnano-client-image:1.0.0
     build:
-      context: react
+      context: frontend
       dockerfile: Dockerfile
     ports:  #outside:inside(container)
       - 3000:3000
